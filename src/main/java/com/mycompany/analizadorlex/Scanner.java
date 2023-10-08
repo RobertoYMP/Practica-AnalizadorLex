@@ -189,6 +189,7 @@ public class Scanner {
                     }else{
                         Token t = new Token(TipoToken.NUMBER, lexema, Integer.valueOf(lexema));
                         tokens.add(t);
+                        //Va a estado de acpetacion
                         estado = 0;
                         lexema = "";
                         i--;
@@ -210,10 +211,44 @@ public class Scanner {
                     }else{
                         Token t = new Token(TipoToken.NUMBER, lexema, Double.valueOf(lexema));
                         tokens.add(t);
+                        //Va a estado de acpetacion
                         estado = 0;
                         lexema = "";
                         i--;
                     }
                     break;
-      
+                case 18:
+                    if (c == '+' || c == '-') {
+                        lexema += c;
+                        estado = 19;
+                    }else if(Character.isDigit(c)){
+                        estado = 20;
+                        lexema += c;
+                    }
+                    break;
+                case 19:
+                    if(Character.isDigit(c)){
+                        estado = 20;
+                        lexema += c;
+                    }
+                    break;
+                case 20:
+                    if(Character.isDigit(c)){
+                        estado = 20;
+                        lexema += c;
+                    }else{
+                        TipoToken tt = palabrasReservadas.get(lexema);
+                        if(tt == null){
+                            Token t = new Token(TipoToken.NUMBER, lexema);
+                            tokens.add(t);
+                        }else{
+                            Token t = new Token(tt, lexema);
+                            tokens.add(t);
+                        }
+                        //Va a estado de acpetacion
+                        estado = 0;
+                        lexema = "";
+                        i--;
+                    }
+                    break;
 
