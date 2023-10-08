@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.mycompany.analizadorlex;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -113,7 +112,6 @@ public class Scanner {
                         tokens.add(t);
                         i--;
                     }
-
                     estado = 0;
                     lexema = "";
                     break;
@@ -270,4 +268,57 @@ public class Scanner {
                         lexema += c;
                     }
                     break;
+                   
+                case 26:
+                    if(c == '*'){
+                        estado = 27;
+                        lexema += c;
+                    }else if(c == '/'){
+                        estado = 30;
+                        lexema += c;
+                    }else{
+                        Token t = new Token(TipoToken.SLASH, lexema);
+                        tokens.add(t);
+                        estado = 0;
+                        lexema = "";
+                        i--;
+                    }
+                    break;
+                case 27:
+                    if(c == '*'){
+                        estado = 28;
+                        lexema += c;
+                    }else{
+                        estado = 27;
+                        lexema += c;
+                    }
+                    break;
+                case 28:
+                    if(c == '*'){
+                        estado = 28;
+                        lexema += c;
+                    }else if(c == '/'){
+                        estado = 0;
+                        lexema = "";
+                    }else{
+                        estado = 27;
+                        lexema += c;
+                    }
+                    break;
+                case 30:
+                    if(c == '\n'){
+                        estado = 0;
+                        lexema = "";
+                    }else{
+                        estado = 30;
+                        lexema += c;
+                    }
 
+                    break;
+
+            }
+        }
+
+        return tokens;
+    }
+}

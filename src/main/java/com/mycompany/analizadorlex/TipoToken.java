@@ -1,4 +1,5 @@
 package com.mycompany.analizadorlex;
+
 public enum TipoToken {
     // Tokens de un solo caracter
     LEFT_PAREN, RIGHT_PAREN, LEFT_BRACE, RIGHT_BRACE,
@@ -17,5 +18,5 @@ public enum TipoToken {
     AND, ELSE, FALSE, FUN, FOR, IF, NULL, OR,
     PRINT, RETURN, TRUE, VAR, WHILE,
 
-    EOF
+    EOF 
 }

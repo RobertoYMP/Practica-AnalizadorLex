@@ -1,6 +1,6 @@
 package com.mycompany.analizadorlex;
 
-public class Token {
+public class Token{
 
     final TipoToken tipo;
     final String lexema;
@@ -18,7 +18,7 @@ public class Token {
         this.literal = literal;
     }
 
-public String toString() {
+    public String toString() {
         return "-->" + tipo + " " + lexema + " " + literal ;
     }
 }
