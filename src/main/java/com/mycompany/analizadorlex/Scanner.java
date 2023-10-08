@@ -174,7 +174,7 @@ public class Scanner {
                     lexema = "";
                     i--;
                 }
-                break;
+                break;
       //PARTE DE RECONOCIMIENTO DE TOKENS
                 case 15:
                     if(Character.isDigit(c)){
