@@ -154,5 +154,26 @@ public class Scanner {
                     estado = 0;
                     lexema = "";
                     break;
+            //----- PARTE PARA LOS IDENTIFICADORES Y PALABRAS RESERVADAS
+                case 13:
+                if(Character.isLetterOrDigit(c)){
+                    estado = 13;
+                    lexema += c;
+                }
+                else{
+                    TipoToken tt = palabrasReservadas.get(lexema);
 
+                    if(tt == null){
+                        Token t = new Token(TipoToken.IDENTIFIER, lexema);
+                        tokens.add(t);
+                    }else{
+                        Token t = new Token(tt, lexema);
+                        tokens.add(t);
+                    }
+
+                    estado = 0;
+                    lexema = "";
+                    i--;
+                }
+                break;
 }
