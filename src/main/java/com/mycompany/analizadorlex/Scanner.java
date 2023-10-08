@@ -87,5 +87,35 @@ public class Scanner {
                     }else if(c == ')'){
                         Token t = new Token(TipoToken.RIGHT_PAREN,lexema);
                         tokens.add(t);
+                    }else if(c == '('){
+                        Token t = new Token(TipoToken.LEFT_PAREN,lexema);
+                        tokens.add(t);
+                    }else if(c == '}'){
+                        Token t = new Token(TipoToken.RIGHT_BRACE,lexema);
+                        tokens.add(t);
+                    }else if(c == '{'){
+                        Token t = new Token(TipoToken.LEFT_BRACE,lexema);
+                        tokens.add(t);
+                    }else if(c == '*'){
+                        Token t = new Token(TipoToken.STAR,lexema);
+                        tokens.add(t);
+                    }else if(c == ';'){
+                        Token t = new Token(TipoToken.SEMICOLON,lexema);
+                        tokens.add(t);
+                    }
+                    break;
+                case 1:
+                    if(c == '='){
+                        Token t = new Token(TipoToken.GREATER_EQUAL, lexema);
+                        tokens.add(t);
+                    }else{
+                        Token t = new Token(TipoToken.GREATER, lexema);
+                        tokens.add(t);
+                        i--;
+                    }
+
+                    estado = 0;
+                    lexema = "";
+                    break;
 
 }
