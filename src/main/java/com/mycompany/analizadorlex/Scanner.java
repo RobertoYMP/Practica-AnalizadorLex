@@ -72,35 +72,65 @@ public class Scanner {
                         estado = 26;
                         lexema += c;
                     }else if(c == '+'){
+                        lexema += c;
                         Token t = new Token(TipoToken.PLUS,lexema);
                         tokens.add(t);
+                        estado = 0;
+                        lexema = "";
                     }else if(c == '-'){
+                        lexema += c;
                         Token t = new Token(TipoToken.MINUS,lexema);
                         tokens.add(t);
+                        estado = 0;
+                        lexema = "";
                     }else if(c == '.'){
+                        lexema += c;
                         Token t = new Token(TipoToken.DOT,lexema);
                         tokens.add(t);
+                        estado = 0;
+                        lexema = "";
                     }else if(c == ','){
+                        lexema += c;
                         Token t = new Token(TipoToken.COMMA,lexema);
                         tokens.add(t);
+                        estado = 0;
+                        lexema = "";
                     }else if(c == ')'){
+                        lexema += c;
                         Token t = new Token(TipoToken.RIGHT_PAREN,lexema);
                         tokens.add(t);
+                        estado = 0;
+                        lexema = "";
                     }else if(c == '('){
+                        lexema += c;
                         Token t = new Token(TipoToken.LEFT_PAREN,lexema);
                         tokens.add(t);
+                        estado = 0;
+                        lexema = "";
                     }else if(c == '}'){
+                        lexema += c;
                         Token t = new Token(TipoToken.RIGHT_BRACE,lexema);
                         tokens.add(t);
+                        estado = 0;
+                        lexema = "";
                     }else if(c == '{'){
+                        lexema += c;
                         Token t = new Token(TipoToken.LEFT_BRACE,lexema);
                         tokens.add(t);
+                        estado = 0;
+                        lexema = "";
                     }else if(c == '*'){
+                        lexema += c;
                         Token t = new Token(TipoToken.STAR,lexema);
                         tokens.add(t);
+                        estado = 0;
+                        lexema = "";
                     }else if(c == ';'){
-                        Token t = new Token(TipoToken.SEMICOLON,lexema);
+                        lexema += c;
+                        Token t = new Token(TipoToken.SEMICOLON, lexema);
                         tokens.add(t);
+                        estado = 0;
+                        lexema = "";
                     }
                     break;
                 case 1:
