@@ -251,4 +251,23 @@ public class Scanner {
                         i--;
                     }
                     break;
+                    //Parte de reconocimiento de cadena
+                    case 24:
+                    if(Character.isJavaIdentifierPart(c)){
+                        estado = 24;
+                        lexema += c;
+                    }else if(c == '"'){
+                        Token t = new Token(TipoToken.STRING, lexema, String.valueOf(lexema));
+                        tokens.add(t);
+                        //vas a estado de aceptación
+                        estado = 0;
+                        lexema = "";
+                    }else if(c == '\n'){
+                        //ERROR EN CADENA CUANDO TENGAMOS: "SALTO DE LINEA" 
+                        System.out.println("Error");
+                    }
+                    else{
+                        lexema += c;
+                    }
+                    break;
 
