@@ -170,10 +170,50 @@ public class Scanner {
                         Token t = new Token(tt, lexema);
                         tokens.add(t);
                     }
-
                     estado = 0;
                     lexema = "";
                     i--;
                 }
                 break;
-}
+      //PARTE DE RECONOCIMIENTO DE TOKENS
+                case 15:
+                    if(Character.isDigit(c)){
+                        estado = 15;
+                        lexema += c;
+                    }else if(c == '.'){
+                        estado = 16;
+                        lexema += c;
+                    }else if(c == 'E'){
+                        estado = 18;
+                        lexema += c;
+                    }else{
+                        Token t = new Token(TipoToken.NUMBER, lexema, Integer.valueOf(lexema));
+                        tokens.add(t);
+                        estado = 0;
+                        lexema = "";
+                        i--;
+                    }
+                    break;
+                case 16:
+                    if(Character.isDigit(c)){
+                        estado = 17;
+                        lexema += c;
+                    }
+                    break;
+                case 17:
+                    if(Character.isDigit(c)){
+                        estado = 17;
+                        lexema += c;
+                    }else if(c == 'E'){
+                        estado = 18;
+                        lexema += c;
+                    }else{
+                        Token t = new Token(TipoToken.NUMBER, lexema, Double.valueOf(lexema));
+                        tokens.add(t);
+                        estado = 0;
+                        lexema = "";
+                        i--;
+                    }
+                    break;
+      
+
