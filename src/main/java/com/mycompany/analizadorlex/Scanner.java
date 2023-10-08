@@ -40,5 +40,52 @@ public class Scanner {
     public Scanner(String source){
         this.source = source + " ";
     }
+    public List<Token> scan() throws Exception {
+        int estado = 0;
+        String lexema = "";
+        char c;
+        for(int i=0; i<source.length(); i++){
+            c = source.charAt(i);
+            switch (estado){
+                case 0:
+                    if(Character.isLetter(c)){
+                        estado = 13;
+                        lexema += c;
+                    }
+                    else if(Character.isDigit(c)){
+                        estado = 15;
+                        lexema += c;
+                    }else if(c == '>'){
+                        estado = 1;
+                        lexema += c;
+                    }else if(c == '<'){
+                        estado = 4;
+                        lexema += c;
+                    }else if(c == '='){
+                        estado = 7;
+                        lexema += c;
+                    }else if(c == '!'){
+                        estado = 10;
+                        lexema += c;
+                    }else if(c == '"'){
+                        estado = 24;
+                    }else if(c == '/'){
+                        estado = 26;
+                        lexema += c;
+                    }else if(c == '+'){
+                        Token t = new Token(TipoToken.PLUS,lexema);
+                        tokens.add(t);
+                    }else if(c == '-'){
+                        Token t = new Token(TipoToken.MINUS,lexema);
+                        tokens.add(t);
+                    }else if(c == '.'){
+                        Token t = new Token(TipoToken.DOT,lexema);
+                        tokens.add(t);
+                    }else if(c == ','){
+                        Token t = new Token(TipoToken.COMMA,lexema);
+                        tokens.add(t);
+                    }else if(c == ')'){
+                        Token t = new Token(TipoToken.RIGHT_PAREN,lexema);
+                        tokens.add(t);
 
 }
