@@ -159,6 +159,7 @@ public class Scanner {
                     break;
                 case 7:
                     if(c == '='){
+                        lexema += c;
                         Token t = new Token(TipoToken.EQUAL_EQUAL, lexema);
                         tokens.add(t);
                     }else{
@@ -169,9 +170,10 @@ public class Scanner {
 
                     estado = 0;
                     lexema = "";
-                    break;
+                break;
                 case 10:
                     if(c == '='){
+                        lexema += c;
                         Token t = new Token(TipoToken.BANG_EQUAL, lexema);
                         tokens.add(t);
                     }else{
@@ -181,7 +183,7 @@ public class Scanner {
                     }
                     estado = 0;
                     lexema = "";
-                    break;
+                break;
             //----- PARTE PARA LOS IDENTIFICADORES Y PALABRAS RESERVADAS
                 case 13:
                 if(Character.isLetterOrDigit(c)){
